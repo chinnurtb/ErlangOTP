@@ -1,0 +1,130 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="KEYWORDS"
+content="wiki, authoring, erlang">
+<meta name="DESCRIPTION"
+content="How to setup an Erlang wiki">
+<title>Main</title>
+</head>
+<body bgcolor="white">
+<center>
+<table width='80%'><tr><td>
+<table cellspacing=0 cellpadding=4 border=0 bgcolor='#FFFF66' width='100%'>
+<tr><td>
+<center>
+<i>Joe's spitting in the sawdust Erlang tutorials</i><br>
+Tutorial number 4<br>
+Last edited 2003-11-26<br>
+Setting up a wiki
+</center>
+</td></tr></table>
+<p>This tutorial shows you how to setup a an Erlang
+wiki server. All the code is in <a
+href="http://www.sics.se/~joe/tutorials/wiki.tgz">wiki.tgz</a>.
+<p>Please, report all errors, omissions or improvements to the
+author.
+<p>
+<p>The wiki runs as a system daemon. Setting up a system daemon was
+described in detail <a
+href="http://www.sics.se/~joe/tutorials/web_server/web_server.html#m2">here</a>.
+<p><table cellpadding=4 cellspacing=0 border=0 bgcolor="#CCFFCC"width="100%"><tr><td><p align=left>Step by step instructions</td></tr></table>
+<ol>
+<li>Down load the file <a
+href="http://www.sics.se/~joe/tutorials/wiki.tgz">wiki.tgz</a>
+<li>Create a directory to store the wiki program and data base then
+unpack wiki.tgz in this directory. Note: I have chosen the directory
+name <tt>/home/joe/installed</tt>, when you follow these instructions
+you will have to change this path to point to your local installation
+directory.
+<p>Unpack the distribution and run make, like this:
+<ul><table border=1 cellpadding=10>
+<tr>
+<td>
+<pre>
+<b>
+> mkdir /home/joe/installed
+> cp wiki.tgz /home/joe/installed
+> cd /home/joe/installed
+> tar -xzvf wiki.tgz
+> ... wiki is unpacked into a sub-directory called wiki
+> cd wiki
+> make
+</b></pre></td></tr></table></ul>
+<p>
+<li>Edit the environment variables in the
+start of the script <a href='wiki.sh'>wiki.sh</a> .
+This file starts
+<ul><table border=1 cellpadding=10>
+<tr>
+<td>
+<pre>
+<b>
+## You will have to edit the following three variables
+##   $ROOT = path to the wiki code and store
+##   $PORT = port to run as
+##   $ERL  = location of erlang
+ 
+ROOT=/home/joe/wiki
+PORT=4999
+ERL=/home/joe/installed/otp_src_R8B-2/bin/erl
+</b></pre></td></tr></table></ul>
+<p>Edit these environment variables to reflect the values you want on
+your system.
+<ul><table border=1 cellpadding=10>
+<tr>
+<td>
+<pre>
+<b>
+> cd /home/joe/installed/wiki
+> emacs wiki.sh
+... edit environment variables
+</b></pre></td></tr></table></ul>
+</ol>
+<p><table cellpadding=4 cellspacing=0 border=0 bgcolor="#CCFFCC"width="100%"><tr><td><p align=left>testing</td></tr></table>
+<ul><table border=1 cellpadding=10>
+<tr>
+<td>
+<pre>
+<b>
+> cd /home/joe/installed/wiki 
+./wiki.sh debug
+Erlang (BEAM) emulator version 5.1.2 [source]
+
+Eshell V5.1.2  (abort with ^G)
+1> Start:{'4992','/home/joe/installed/wiki/store'}
+Starting a port server on 4992...
+</b></pre></td></tr></table></ul>
+<p>Fire up a web browser and surf to
+<a href="http://localhost:4992/wiki/">http://localhost:4992/wiki/</a>.
+<p><table cellpadding=4 cellspacing=0 border=0 bgcolor="#CCFFCC"width="100%"><tr><td><p align=left>Permanent istallation</td></tr></table>
+<p>These instructions have been tested on red hat 7.3
+<p>In the end of the file <tt><b>/etc/rc.d/rc.local</b></tt> add
+the following line:
+<ul><table border=1 cellpadding=10>
+<tr>
+<td>
+<pre>
+<b>
+# start my local demons
+/etc/rc.d/joe_services.sh &
+</b></pre></td></tr></table></ul>
+<p>This runs the script <tt><b>/etc/rc.d/joe_services.sh</b></tt> in
+the background. <i>Note the & is very important - running this in the
+foreground can be disastrous and may deadlock your system :-)</i>
+<p><a href='joe_services.sh'>joe_services.sh</a> is as follows:
+<p><table border=1 cellpadding=5 bgcolor="#FFFCC" width="100%"><tr><td><pre><b>#!/bin/sh
+## start my local demons
+
+for i in /home/joe/services/*.sh 
+  do
+    /bin/su joe $i start
+  done
+</b></pre></td></tr></table>
+<p>This script is run as root. The command
+<tt><b>su joe $i start</b></tt> runs the shell script <tt><b>$i</b></tt> as
+user <tt><b>joe</b></tt> - note <i>not</i> as root.
+<p>The directory <tt><b>/home/joe/services</b></tt> must contain
+the file <a href="wiki.sh">wiki.sh</a>.
+</td></tr></table></center></body></html>

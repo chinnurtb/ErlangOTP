@@ -1,0 +1,136 @@
+<include>${MACROS}/outline.mac</include>
+
+<def name="link">
+fun(_,Str) ->
+["<a href='",Str,"'>",Str,"</a> "]
+end
+</def>
+
+<top keywords="wiki, authoring, erlang"
+     description="How to setup an Erlang wiki"
+     title="Main" file="bookIndex.html" />
+
+<yellowbox>
+<center>
+<i>Joe's spitting in the sawdust Erlang tutorials</i><br>
+Tutorial number 4<br>
+Last edited 2003-11-26<br>
+Setting up a wiki
+</center>
+</yellowbox>
+
+  <p>This tutorial shows  you   how  to  setup a an Erlang
+  wiki  server.       All     the     code      is  in   <a
+href="http://www.sics.se/~joe/tutorials/wiki.tgz">wiki.tgz</a>.
+
+  <p>Please,  report  all errors,  omissions  or  improvements to  the
+author.
+  <p>
+
+<include>bookIndex.html</include>
+
+  <p>The wiki runs as a system  daemon. Setting up a system daemon was
+described                 in                 detail                 <a
+href="http://www.sics.se/~joe/tutorials/web_server/web_server.html#m2">here</a>.
+
+
+  <banner>Step by step instructions</banner>
+
+  <ol>
+<li>Down load the file <a
+href="http://www.sics.se/~joe/tutorials/wiki.tgz">wiki.tgz</a>
+
+  <li>Create a directory to store  the wiki program and data base then
+unpack wiki.tgz in  this directory. Note: I have  chosen the directory
+name <tt>/home/joe/installed</tt>, when  you follow these instructions
+you will have to change this  path to point to your local installation
+directory.
+
+<p>Unpack the distribution and run make, like this:
+
+<box>
+> mkdir /home/joe/installed
+> cp wiki.tgz /home/joe/installed
+> cd /home/joe/installed
+> tar -xzvf wiki.tgz
+> ... wiki is unpacked into a sub-directory called wiki
+> cd wiki
+> make
+</box>
+<p>
+<li>Edit the environment variables in the
+start of the script <link>wiki.sh</link>.
+
+This file starts
+
+<box>
+## You will have to edit the following three variables
+##   $ROOT = path to the wiki code and store
+##   $PORT = port to run as
+##   $ERL  = location of erlang
+ 
+ROOT=/home/joe/wiki
+PORT=4999
+ERL=/home/joe/installed/otp_src_R8B-2/bin/erl
+</box>
+
+  <p>Edit these environment variables to  reflect the values you want on
+your system.
+
+<box>
+> cd /home/joe/installed/wiki
+> emacs wiki.sh
+... edit environment variables
+</box>
+</ol>
+
+<banner>testing</banner>
+
+<box>
+> cd /home/joe/installed/wiki 
+./wiki.sh debug
+Erlang (BEAM) emulator version 5.1.2 [source]
+
+Eshell V5.1.2  (abort with ^G)
+1> Start:{'4992','/home/joe/installed/wiki/store'}
+Starting a port server on 4992...
+</box>
+
+<p>Fire up a web browser and surf to
+<a href="http://localhost:4992/wiki/">http://localhost:4992/wiki/</a>.
+
+<banner>Permanent istallation</banner>
+
+<p>These instructions have been tested on red hat 7.3
+
+<p>In the end of the file <code>/etc/rc.d/rc.local</code> add
+the following line:
+
+<box>
+# start my local demons
+/etc/rc.d/joe_services.sh &
+</box>
+
+  <p>This  runs the  script  <code>/etc/rc.d/joe_services.sh</code> in
+the background.  <i>Note the & is very important - running this in the
+foreground can be disastrous and may deadlock your system :-)</i>
+
+<p><link>joe_services.sh</link> is as follows:
+
+<include_code>joe_services.sh</include_code>
+
+  <p>This script is run  as root. The command
+<code>su joe $i start</code>  runs the shell script <code>$i</code> as
+user <code>joe</code> - note <i>not</i> as root.
+
+  <p>The  directory  <code>/home/joe/services</code>  must contain
+the file <a href="wiki.sh">wiki.sh</a>.
+
+  <bot/>
+
+
+
+
+
+
+

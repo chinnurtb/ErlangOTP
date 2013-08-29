@@ -1,0 +1,10 @@
+{application, chat_system,
+  [{description, "Chat System"},
+  {vsn, "1.0"},
+  {modules, [chat_client, message_router, misc_server, web_server,
+	     chat_system_sup, message_router_sup, mucc, web_sup,
+	     hello_web, message_store, server_util]},
+  {registered, [message_router, message_store, mucc]},
+  {applications, [kernel, stdlib, mnesia]},
+  {env, []},
+  {mod, {chat_system, 9090}}]}.

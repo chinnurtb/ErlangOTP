@@ -1,0 +1,11 @@
+1) To compile
+   make 
+
+2) To run
+   - edit the environment variables in web_sever.sh
+   - give the command
+     ./web_server.sh {start, debug, stop}
+
+
+
+

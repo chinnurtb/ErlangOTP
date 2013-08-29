@@ -1,0 +1,64 @@
+[preface]
+[[PREFACE]]
+Preface: What's an étude?
+-------------------------
+
+An étude, according to Wikipedia, is "an instrumental musical composition, usually short and of considerable difficulty, usually designed to provide practice material for perfecting a particular musical skill."
+
+What are Études for Erlang?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In this book, you will find descriptions of programs that you
+can compose (write) in Erlang. The programs will usually be short,
+and each one has been designed to provide practice material for a particular
+Erlang programming concept. Unlike musical études, these programs have not been
+designed to be of considerable difficulty, though they may ask you to
+stretch a bit beyond the immediate material and examples that you find
+in the book http://shop.oreilly.com/product/0636920025818.do[Introducing Erlang].
+
+How This Book was Written
+~~~~~~~~~~~~~~~~~~~~~~~~~
+While reading the early release version of _Introducing Erlang_,
+I began by copying the examples in the book. (This always helps me
+learn the material better.) I then began experimenting with small
+programs of my own to make sure I really understood the concepts.
+As I continued writing my own examples, I thought they might be useful
+to other people as well. I contacted Simon St. Laurent, the author
+of Introducing Erlang, and he liked the idea of having these companion
+exercises and suggested naming them études.
+At some point, the études took on a life of their own,
+and you are reading the result now.
+
+I was learning Erlang as I was creating the solutions to the
+études, following the 
+philosophy that "the first way that works is the right way."
+Therefore, don't be surprised if you see some fairly
+naïve code that an expert Erlang programmer would never write.
+
+Working with Other Books
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Although this was based on _Introducing Erlang_, you can use it with other Erlang books. A note at the beginning of each chapter will point you to relevant sections in other books. The books listed through are:
+
+* http://shop.oreilly.com/product/9780596518189.do[Erlang Programming], by Francesco Cesarini, and Simon Thompson (O'Reilly Media, 2009).
+
+* http://pragprog.com/book/jaerlang/programming-erlang[Programming Erlang], by Joe Armstrong (Pragmatic Programmers, 2007).
+
+* http://www.manning.com/logan/[Erlang and OTP in Action] by Martin Logan, Eric Merritt, and Richard Carlsson (Manning, 2010).
+
+* http://nostarch.com/erlang[Learn You Some Erlang for Great Good!] by Fred Hebert (No Starch Press, 2013) - also available at http://learnyousomeerlang.com/.
+
+
+=== Acknowledgments
+
+Many thanks to Simon St. Laurent, who wrote _Introducing Erlang_. His book
+not only got me to begin to understand functional programming, but also made
+me realize that it was a lot of fun. Simon also felt that the exercises
+I was writing for myself could be useful to others, and he encouraged me
+to continue developing them.
+
+[[suggested_topic]]
+[role="shoutout"]
+.Have any suggested topics?
+****
+Suggest topics you'd like to see covered here, or just go add them yourself at https://github.com/oreillymedia/etudes-for-erlang[oreillymedia/etudes-for-erlang] on GitHub.
+****

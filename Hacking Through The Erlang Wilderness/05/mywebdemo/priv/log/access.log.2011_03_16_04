@@ -1,0 +1,2 @@
+192.168.87.1 - - [15/Mar/2011:21:42:03 -0700] "GET / HTTP/1.1" 200 42 "" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15"
+192.168.87.1 - - [15/Mar/2011:21:43:06 -0700] "GET /service HTTP/1.1" 200 45 "" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15"
